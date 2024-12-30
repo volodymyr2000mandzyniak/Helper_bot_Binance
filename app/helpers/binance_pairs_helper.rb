@@ -1,0 +1,2 @@
+module BinancePairsHelper
+end

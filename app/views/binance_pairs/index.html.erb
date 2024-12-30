@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Binance Trading Pairs for BTC (<%= @pairs_count %> available)</h1>
+  <%= link_to 'Go to Favorites', favorites_path, class: 'btn btn-sm btn-primary mb-3' %>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Symbol</th>
+        <th>#</th>
+        <th>Symbol</th>
+        <th>#</th>
+        <th>Symbol</th>
+        <th>#</th>
+        <th>Symbol</th>
+        <th>#</th>
+        <th>Symbol</th>
+        <th>#</th>
+        <th>Symbol</th>
+        <th>#</th>
+        <th>Symbol</th>
+        <th>#</th>
+        <th>Symbol</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pairs.each_slice(8).with_index do |slice, index| %>
+        <tr>
+          <% slice.each_with_index do |pair, pair_index| %>
+            <td><%= index * 8 + pair_index + 1 %></td>
+            <td>
+              <div class="d-flex flex-column align-items-start">
+                <%= link_to pair[:symbol].gsub('BTC', '/BTC'), "https://www.binance.com/en/trade/#{pair[:symbol]}", target: '_blank', class: 'text-primary' %>
+                <%= button_to 'Add', add_to_favorites_path(symbol: pair[:symbol]), method: :post, class: 'btn btn-sm btn-success mt-1' %>
+              </div>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

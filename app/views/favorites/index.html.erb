@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Favorite Trading Pairs</h1>
+  <%= link_to 'Back to Pairs', binance_pairs_index_path, class: 'btn btn-secondary mb-3' %>
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Symbol</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @favorites.each_with_index do |favorite, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= link_to favorite.symbol.gsub('BTC', '/BTC'), "https://www.binance.com/en/trade/#{favorite.symbol}", target: '_blank', class: 'text-primary' %></td>
+          <td><%= button_to 'Remove', favorite_path(favorite), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

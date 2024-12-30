@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Profile</h1>
+  <div class="card">
+    <div class="card-header">
+      Account Information
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Total Balance: <%= @total_usdt %> USDT</h5>
+      <h5 class="card-title">Coins</h5>
+      <ul class="list-group">
+        <% @balances_with_usdt.each do |balance| %>
+          <% if balance['free'].to_f > 0 %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= balance['asset'] %>: <%= balance['free'] %>
+              <span class="badge bg-primary rounded-pill">
+                <%= balance['usdt_value'].round(2) %> USDT
+              </span>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
