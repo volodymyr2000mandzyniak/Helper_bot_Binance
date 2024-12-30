@@ -95,9 +95,9 @@ GEM
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    dotenv (3.1.6)
-    dotenv-rails (3.1.6)
-      dotenv (= 3.1.6)
+    dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
       railties (>= 6.1)
     drb (2.2.1)
     error_highlight (0.7.0)
@@ -150,21 +150,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.1-aarch64-linux-gnu)
-      racc (~> 1.4)
-    nokogiri (1.18.1-aarch64-linux-musl)
-      racc (~> 1.4)
-    nokogiri (1.18.1-arm-linux-gnu)
-      racc (~> 1.4)
-    nokogiri (1.18.1-arm-linux-musl)
-      racc (~> 1.4)
-    nokogiri (1.18.1-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.18.1-x86_64-linux-gnu)
-      racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-linux-musl)
       racc (~> 1.4)
     parallel (1.26.3)
     parser (3.3.6.0)
@@ -292,15 +278,8 @@ GEM
     zeitwerk (2.6.18)
 
 PLATFORMS
-  aarch64-linux-gnu
-  aarch64-linux-musl
-  arm-linux-gnu
-  arm-linux-musl
-  arm64-darwin
-  x86_64-darwin
   x86_64-linux
   x86_64-linux-gnu
-  x86_64-linux-musl
 
 DEPENDENCIES
   bootsnap
