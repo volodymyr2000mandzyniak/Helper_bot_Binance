@@ -1,22 +1,113 @@
 <div class="container mt-5">
-  <h1 class="mb-4">Favorite Trading Pairs</h1>
-  <%= link_to 'Back to Pairs', binance_pairs_index_path, class: 'btn btn-secondary mb-3' %>
-  <table class="table table-bordered table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th>#</th>
-        <th>Symbol</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @favorites.each_with_index do |favorite, index| %>
+  <h1 class="mb-4 text-center">Favorite Trading Pairs</h1>
+  <%= link_to 'Back to Pairs', binance_pairs_index_path, class: 'btn btn-sm btn-secondary mb-3 custom-back-btn' %>
+  
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover custom-table">
+      <thead class="thead-dark">
         <tr>
-          <td><%= index + 1 %></td>
-          <td><%= link_to favorite.symbol.gsub('BTC', '/BTC'), "https://www.binance.com/en/trade/#{favorite.symbol}", target: '_blank', class: 'text-primary' %></td>
-          <td><%= button_to 'Remove', favorite_path(favorite), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } %></td>
+          <th>#</th>
+          <th>Symbol</th>
+          <th>Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @favorites.each_with_index do |favorite, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td>
+              <%= link_to favorite.symbol.gsub('BTC', '/BTC'), "https://www.binance.com/en/trade/#{favorite.symbol}", target: '_blank', class: 'text-primary custom-link' %>
+            </td>
+            <td>
+              <%= button_to 'Remove', favorite_path(favorite), method: :delete, class: 'btn btn-sm btn-danger custom-remove-btn', data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+
+<style>
+/* Загальний стиль для таблиці */
+.custom-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.custom-table th, .custom-table td {
+  text-align: center;
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.custom-table th {
+  background-color: #343a40;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.custom-table td {
+  background-color: #f8f9fa;
+}
+
+.custom-table tbody tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #e2e6ea;
+  cursor: pointer;
+}
+
+/* Стиль для лінків */
+.custom-link {
+  font-size: 14px;
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.custom-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Стиль для кнопки "Remove" */
+.custom-remove-btn {
+  font-size: 12px;
+  background-color: #dc3545;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.custom-remove-btn:hover {
+  background-color: #c82333;
+  cursor: pointer;
+}
+
+/* Стиль для кнопки "Back to Pairs" */
+.custom-back-btn {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.custom-back-btn:hover {
+  background-color: #5a6268;
+  border-color: #4e555b;
+}
+
+/* Адаптивність для малих екранів */
+@media (max-width: 767px) {
+  .custom-table th, .custom-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .btn-sm {
+    font-size: 10px;
+  }
+}
+</style>

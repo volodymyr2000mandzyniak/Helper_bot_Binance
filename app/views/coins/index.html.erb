@@ -1,0 +1,43 @@
+<div class="container my-5">
+  <h1 class="text-center mb-4">Список ліквідних монет (Доступно пар: <%= @total_pairs %>)</h1>
+
+  <!-- Пошукове поле -->
+  <div class="mb-3">
+    <%= form_with(url: coins_path, method: :get, local: true) do %>
+      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: "Пошук валютної пари..." %>
+      <%= submit_tag "Пошук", class: 'btn btn-primary mt-2' %>
+    <% end %>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover align-middle" id="currenciesTable">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col">Назва</th>
+          <th scope="col">Валютна пара</th>
+          <th scope="col">Обсяг торгів (24 год)</th>
+          <th scope="col">Зміна ціни (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tickers.each_with_index do |ticker, index| %>
+          <% base_currency, quote_currency = ticker['symbol'][0..-5], ticker['symbol'][-4..] %>
+          <tr>
+            <td class="text-center"><%= index + 1 %></td>
+            <td>
+              <%= link_to "#{base_currency}/#{quote_currency}", 
+                          "https://www.binance.com/en/trade/#{base_currency}_#{quote_currency}",
+                          target: '_blank', rel: 'noopener', class: 'text-decoration-none' %>
+            </td>
+            <td><%= "#{base_currency}/#{quote_currency}" %></td>
+            <td><%= number_with_delimiter(ticker['quoteVolume'].to_f, delimiter: ',') %></td>
+            <td class="<%= ticker['priceChangePercent'].to_f.positive? ? 'text-success' : 'text-danger' %>">
+              <%= ticker['priceChangePercent'].to_f %> %
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
