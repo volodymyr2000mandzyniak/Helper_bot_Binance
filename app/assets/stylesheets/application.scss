@@ -1,3 +1,69 @@
 @import "bootstrap";
 
+/* application.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0; /* Світло-сірий фон */
+  background-image: linear-gradient(to right, #f0f0f0, #e0e0e0); /* Градієнтний фон */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #333; /* Темний текст для контрасту */
+}
+
+/* Стилі для навбару */
+.navbar {
+  background-color: #333; /* Темний фон */
+  color: #fff; /* Білий текст */
+  padding: 10px 0;
+}
+
+.navbar-brand h3 {
+  margin: 0;
+  color: #fff; /* Білий текст для логотипу */
+}
+
+.navbar-toggler {
+  border-color: #fff; /* Білий колір для кнопки тоглера */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-nav .nav-link {
+  color: #fff; /* Білий текст для посилань */
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ddd; /* Світліший колір при наведенні */
+}
+
+.navbar-nav .nav-link.active {
+  color: #ffcc00; /* Виділений колір для активного посилання */
+}
+
+/* Додаткові стилі для покращення зовнішнього вигляду */
+.container-fluid {
+  padding: 0;
+}
+
+.navbar-collapse {
+  justify-content: space-between;
+}
+
+.navbar-nav.me-auto {
+  margin-right: auto;
+}
+
+.navbar-nav.ms-auto {
+  margin-left: auto;
+}
